@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"code.google.com/p/go-tour/pic"
+	"golang.org/x/tour/pic"
 )
 
 func printSlice(s string, x []int) {
@@ -11,6 +11,19 @@ func printSlice(s string, x []int) {
 }
 
 var pow = []int{1, 2, 4, 8, 16, 32, 64, 128}
+
+func Pic(dx, dy int) [][]uint8 {
+	a := make([][]uint8, dy)
+	for x := range a {
+		b := make([]uint8, dx)
+		for y := range b {
+			b[y] = uint8(x*y - 1)
+		}
+		a[x] = b
+	}
+
+	return a
+}
 
 func main() {
 	var a [2]string
@@ -81,4 +94,6 @@ func main() {
 	for _, value := range pow2 {
 		fmt.Printf("%d\n", value)
 	}
+
+	pic.Show(Pic)
 }
